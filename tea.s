@@ -27,7 +27,7 @@ encrypt:
 
 	L1_loop:
 		# sum += delta;
-		addl	DELTA, %r14d
+		addl	$DELTA, %r14d
 
 		# y += ((z << 4) + k[0]) ^ (z+sum) ^ ((z >> 5) + k[1]);
 		# (z << 4) + k[0]
@@ -109,7 +109,7 @@ decrypt:
 	movl	12(%rsi), %r13d	# k[3]	11-15 bytes
 
 	# loop variables
-	movl	DELTA, %r14d		# total sum
+	movl	$DELTA, %r14d		# total sum
 	shll	$5, %r14d				# delta << 5
 	movl	$0, %r15d				# n = 0
 
@@ -157,7 +157,7 @@ decrypt:
 		subl	%ebx, %r8d
 
 		# sum -= delta;
-		subl	DELTA, %r14d
+		subl	$DELTA, %r14d
 
 		# loop comparison
 		incl	%r15d
