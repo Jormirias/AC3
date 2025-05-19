@@ -55,7 +55,7 @@ int main(int argc, char **argv)
 		else if (nr > 0)
 		{
 			for (int i = nr; i < 8; ++i)
-				buf[i] = 0x00;
+				buf[i] = 0x00; // adds 0 value bytes to buffer
 			encrypt(buf, key);
 			fwrite(buf, sizeof(unsigned char), 8, fCiphered);
 			break; // since for number of bytes < 8 it must be EOF
